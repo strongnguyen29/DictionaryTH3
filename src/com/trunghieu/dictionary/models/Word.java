@@ -1,4 +1,4 @@
-package trunghieu.com.models;
+package com.trunghieu.dictionary.models;
 
 public class Word {
     /**

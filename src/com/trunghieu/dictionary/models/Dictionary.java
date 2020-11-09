@@ -1,4 +1,4 @@
-package trunghieu.com.models;
+package com.trunghieu.dictionary.models;
 
 import java.util.ArrayList;
 
@@ -42,5 +42,13 @@ public class Dictionary {
      */
     public void add(String target, String explain) {
         this.listWords.add(new Word(target, explain));
+    }
+
+    /**
+     * Add all;
+     * @param list ArrayList<Word>
+     */
+    public void addAll(ArrayList<Word> list) {
+        this.listWords.addAll(list);
     }
 }

@@ -1,7 +1,7 @@
-package trunghieu.com;
+package com.trunghieu.dictionary;
 
-import trunghieu.com.models.Dictionary;
-import trunghieu.com.models.Word;
+import com.trunghieu.dictionary.models.Dictionary;
+import com.trunghieu.dictionary.models.Word;
 
 public class DictionaryCommandline {
 
@@ -19,21 +19,30 @@ public class DictionaryCommandline {
      */
     public void showAllWords() {
         System.out.println("==== DICTIONARY TH ====");
-        System.out.println("  No     |  English          |   Vietnamese          ");
+        System.out.println("  No\t\t|  English\t\t|  Vietnamese\t\t");
 
         int i = 1;
         for (Word word : dictionary.getListWords()) {
-            System.out.println("  " + i + "     |  " + word.getTarget() + "       |   " + word.getExplain() + "      ");
+            System.out.println("  " + i + "\t\t|  " + word.getTarget() + "\t\t|  " + word.getExplain() + "\t\t");
             i++;
         }
         System.out.println("==== END DICTIONARY TH ====");
     }
 
     /**
-     * Ham chay chuong trinh
+     * Ham chay chuong trinh ver 1
      */
     public void dictionaryBasic() {
         dictionaryManagement.insertFromCommandline(5);
         showAllWords();
+    }
+
+    /**
+     * Ham chay chuong trinh ver 2
+     */
+    public void dictionaryAdvanced() {
+        dictionaryManagement.insertFromFile();
+        showAllWords();
+        dictionaryManagement.dictionaryLookup();
     }
 }
