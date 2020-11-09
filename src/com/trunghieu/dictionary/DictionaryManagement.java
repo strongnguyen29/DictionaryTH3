@@ -11,6 +11,8 @@ public class DictionaryManagement {
 
     protected Dictionary dictionary;
 
+    protected Scanner scanner;
+
     /**
      * Constructor
      *
@@ -18,6 +20,7 @@ public class DictionaryManagement {
      */
     public DictionaryManagement(Dictionary dictionary) {
         this.dictionary = dictionary;
+        this.scanner = new Scanner(System.in);
     }
 
     /**
@@ -26,7 +29,6 @@ public class DictionaryManagement {
      * @param count so luong tu moi se them vao
      */
     public void insertFromCommandline(int count) {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Thêm từ mới vào từ điển Anh - Việt:");
 
@@ -53,7 +55,6 @@ public class DictionaryManagement {
      * Tra tu dien
      */
     public void dictionaryLookup() {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Tra từ điển Anh - Viet::");
 
@@ -64,7 +65,66 @@ public class DictionaryManagement {
                 if (word.getTarget().equalsIgnoreCase(target)) {
                     System.out.println("Kết quả: ");
                     System.out.println("- " + word.getTarget() + ": " + word.getExplain() + "\t\t\n");
+                    break;
                 }
+            }
+        }
+    }
+
+    /**
+     * Them tu moi tu dong lenh
+     */
+    public void add() {
+        System.out.println("Thêm từ mới vào từ điển.");
+        System.out.println("Nhập từ tiếng anh:");
+        String target = scanner.nextLine();
+
+        System.out.println("Nhập giải nghĩa tiếng viêt:");
+
+        String explain = scanner.nextLine();
+        this.dictionary.add(target, explain);
+    }
+
+    /**
+     * Sửa từ trong từ điển
+     */
+    public void edit() {
+        System.out.println("Sửa từ có trong từ điển.");
+        System.out.println("Nhập từ tiếng anh cần sửa:");
+        String target = scanner.nextLine();
+        Word wordEdit = null;
+        int indexEdit = 0;
+        for (Word word : dictionary.getListWords()) {
+            if (word.getTarget().equalsIgnoreCase(target)) {
+                System.out.println("- " + word.getTarget() + ": " + word.getExplain() + "\t\t\n");
+                wordEdit = word;
+                break;
+            } else {
+                indexEdit++;
+            }
+        }
+
+        if (wordEdit != null) {
+
+            System.out.println("Nhập giải nghĩa tiếng viêt mới:");
+            String explain = scanner.nextLine();
+            this.dictionary.update(indexEdit, new Word(target, explain));
+        } else {
+            System.out.println("Không tồn tại từ này trong từ điển!");
+        }
+    }
+
+    /**
+     * Xóa từ trong từ điển
+     */
+    public void delete() {
+        System.out.println("Xóa từ có trong từ điển.");
+        System.out.println("Nhập từ tiếng anh cần xóa:");
+        String target = scanner.nextLine();
+        for (Word word : dictionary.getListWords()) {
+            if (word.getTarget().equalsIgnoreCase(target)) {
+                this.dictionary.remove(word);
+                break;
             }
         }
     }

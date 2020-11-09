@@ -51,4 +51,21 @@ public class Dictionary {
     public void addAll(ArrayList<Word> list) {
         this.listWords.addAll(list);
     }
+
+    /**
+     * Cap nhat lai phan tu
+     * @param index chi muc
+     * @param word tu sua
+     */
+    public void update(int index, Word word) {
+        this.listWords.set(index, word);
+    }
+
+    /**
+     * Xóa phần tử
+     * @param word Word
+     */
+    public void remove(Word word) {
+        this.listWords.remove(word);
+    }
 }
