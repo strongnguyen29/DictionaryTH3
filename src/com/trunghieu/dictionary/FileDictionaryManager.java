@@ -22,8 +22,8 @@ public class FileDictionaryManager {
     public static ArrayList<Word> loadDataFromFile() {
         ArrayList<Word> list = new ArrayList<>();
         try {
-            File myObj = new File(Main.BASE_PATH + FILE_DIR);
-            Scanner myReader = new Scanner(myObj);
+            File file = new File(System.getProperty("user.dir") + FILE_DIR);
+            Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
 
                 String str = myReader.nextLine();

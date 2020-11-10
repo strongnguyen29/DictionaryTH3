@@ -66,6 +66,6 @@ public class Word {
 
     @Override
     public String toString() {
-        return target + "\t" + explain;
+        return target;
     }
 }
