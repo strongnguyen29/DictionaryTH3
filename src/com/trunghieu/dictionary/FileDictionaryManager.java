@@ -5,12 +5,14 @@ import com.trunghieu.dictionary.models.Word;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileDictionaryManager {
 
-    protected static final String FILE_DIR = "D:\\Hieu\\Java\\DictionaryTH\\src\\res\\dictionaries.txt";
+    protected static final String FILE_DIR = "\\src\\res\\dictionaries.txt";
 
     /**
      * Get ArrayList<Word> from file
@@ -20,7 +22,7 @@ public class FileDictionaryManager {
     public static ArrayList<Word> loadDataFromFile() {
         ArrayList<Word> list = new ArrayList<>();
         try {
-            File myObj = new File(FILE_DIR);
+            File myObj = new File(Main.BASE_PATH + FILE_DIR);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
 
@@ -38,4 +40,43 @@ public class FileDictionaryManager {
         }
         return list;
     }
+
+    /**
+     * Ghi noi dung vao file
+     *
+     * @param content String
+     * @return boolean
+     */
+    public static boolean writeToFile(String content) {
+        FileOutputStream fos = null;
+        File file;
+        try {
+            //Specify the file path here
+            file = new File(Main.BASE_PATH + FILE_DIR);
+
+            fos = new FileOutputStream(file);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            byte[] bytesArray = content.getBytes();
+
+            fos.write(bytesArray);
+            fos.flush();
+            return true;
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error in closing the Stream");
+            }
+        }
+        return false;
+    }
+
 }

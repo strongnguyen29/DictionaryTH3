@@ -68,4 +68,8 @@ public class Dictionary {
     public void remove(Word word) {
         this.listWords.remove(word);
     }
+
+    public void sortAsc() {
+
+    }
 }

@@ -1,3 +1,4 @@
+
 Hello	Xin chào
 I	Tôi
 You	Bạn
@@ -8,3 +9,4 @@ They	Bọn họ
 What	Gì
 Who	Ai
 Where	Ở đâu
+Friend	Bạn

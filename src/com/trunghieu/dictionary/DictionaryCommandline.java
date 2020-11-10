@@ -3,6 +3,8 @@ package com.trunghieu.dictionary;
 import com.trunghieu.dictionary.models.Dictionary;
 import com.trunghieu.dictionary.models.Word;
 
+import java.util.Scanner;
+
 public class DictionaryCommandline {
 
     protected DictionaryManagement dictionaryManagement;
@@ -44,5 +46,49 @@ public class DictionaryCommandline {
         dictionaryManagement.insertFromFile();
         showAllWords();
         dictionaryManagement.dictionaryLookup();
+    }
+
+    /**
+     * Ham chay chuong trinh ver 2
+     */
+    public void dictionaryVer3() {
+        dictionaryManagement.insertFromFile();
+        showAllWords();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Tra từ điển Anh - Viet::");
+
+        while (true) {
+            System.out.println("\n----------------------------------------\n");
+            System.out.println("Nhập mã lệnh đẻ thực hiện các hành động:");
+            System.out.println(
+                    "\nxem : Xem tất cả từ, " +
+                    "\ntra : tra từ điển, " +
+                    "\ntim: Tìm kiếm, " +
+                    "\nthem: thêm từ mới, " +
+                    "\nsua: sửa từ đang có, " +
+                    "\nxoa: xóa từ đang có" +
+                    "\nxuat: Xuất nội dung từ điển hiện tại ra file" +
+                    "\n/q: Đóng từ điển"
+            );
+
+            String action = scanner.nextLine();
+            if (action.equalsIgnoreCase("/q")) {
+                System.out.println("Goodbye!");
+                break;
+            }
+
+            switch (action) {
+                case "xem" -> showAllWords();
+                case "tra" -> dictionaryManagement.dictionaryLookup();
+                case "tim" -> dictionaryManagement.dictionarySearch();
+                case "them" -> dictionaryManagement.add();
+                case "sua" -> dictionaryManagement.edit();
+                case "xoa" -> dictionaryManagement.delete();
+                case "xuat" -> dictionaryManagement.dictionaryExportToFile();
+                default -> System.out.println("Mã lệnh không đúng!");
+            }
+        }
+
     }
 }

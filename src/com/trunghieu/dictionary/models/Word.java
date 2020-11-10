@@ -63,4 +63,9 @@ public class Word {
     public void setExplain(String explain) {
         this.explain = explain;
     }
+
+    @Override
+    public String toString() {
+        return target + "\t" + explain;
+    }
 }
