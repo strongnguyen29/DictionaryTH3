@@ -1,0 +1,13 @@
+
+Hello	Xin chào
+I	Tôi
+You	Bạn
+He	Anh ấy
+She	Cô ấy
+We	chúng ta
+They	Bọn họ
+What	Gì
+Who	Ai
+Where	Ở đâu
+New	Mới
+Friend	Bạn
